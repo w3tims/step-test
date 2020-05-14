@@ -6,7 +6,7 @@ import {CrossTabMessageType} from '../types/cross-tab-message-type.enum';
 @Injectable({
   providedIn: 'root'
 })
-export class CrossTabMessagerService {
+export class CrossTabMessengerService {
   sharedWorker: SharedWorker.SharedWorker;
   onNewMessage = new EventEmitter<ICloseEvenTabsMessage>();
 

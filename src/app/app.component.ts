@@ -6,7 +6,7 @@ import {ICloseEvenTabsMessage} from './types/close-even-tabs-message.interface';
 import {ICloseEvenTabsMessageData} from './types/close-even-tabs-message-data.interface';
 import {isEven} from './utils/is-even';
 import {Title} from '@angular/platform-browser';
-import {CrossTabMessagerService} from './services/cross-tab-messager.service';
+import {CrossTabMessengerService} from './services/cross-tab-messenger.service';
 import {Subscription} from 'rxjs';
 import {CrossTabMessageType} from './types/cross-tab-message-type.enum';
 
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private titleService: Title,
-    private crossTabMessagerService: CrossTabMessagerService,
+    private crossTabMessengerService: CrossTabMessengerService,
   ) {
   }
 
@@ -38,7 +38,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.titleService.setTitle(String(this.randomNumber));
 
-    this.crossTabMessageSubscription = this.crossTabMessagerService.onNewMessage
+    this.crossTabMessageSubscription = this.crossTabMessengerService.onNewMessage
       .subscribe((newMessage: ICloseEvenTabsMessage)  => {
         if (newMessage.type === CrossTabMessageType.CloseEvenTabs) {
           this.onCloseEvenTabs(newMessage.data);
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   closeEvenTabsEmit() {
-    this.crossTabMessagerService.postCloseEvenTabsMessage(this.windowId);
+    this.crossTabMessengerService.postCloseEvenTabsMessage(this.windowId);
   }
 
   onCloseEvenTabs(data: ICloseEvenTabsMessageData) {
