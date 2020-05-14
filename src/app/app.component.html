@@ -1,5 +1,6 @@
-{{ randomNumber }}
+<div class="page-number">{{ randomNumber }}</div>
 
-<a [href]="currentUrl" target="_blank">new window</a>
+<a class="button-regular" [href]="currentUrl" target="_blank">new window</a>
 
-<button type="button" (click)="closeEvenTabsEmit()">post message</button>
+<div class="close-button-title">Close even-number tabs:</div>
+<button class="button-regular" type="button" (click)="closeEvenTabsEmit()">Close</button>
